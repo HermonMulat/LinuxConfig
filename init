@@ -4,3 +4,4 @@ rm -rf ~/.vim && ln -s $baseDir/vim ~/.vim
 rm ~/.bashrc && ln -s $baseDir/bashrc  ~/.bashrc
 rm -rf ~/.vimrc && ln -s $baseDir/vimrc ~/.vimrc
 rm -rf ~/bin && ln -s $baseDir/bin ~/bin
+source ~/.bashrc
