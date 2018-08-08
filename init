@@ -1,0 +1,6 @@
+#!/bin/bash
+baseDir=$(pwd)
+ln -s $baseDir/vim ~/.vim
+ln -s $baseDir/bashrc  ~/.bashrc
+ln -s $baseDir/vimrc ~/.vimrc
+ln -s $baseDir/bin ~/bin

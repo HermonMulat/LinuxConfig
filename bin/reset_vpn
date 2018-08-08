@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo vpnc-disconnect
+sudo vpnc_wrapper ~/.vpnc_dev.conf

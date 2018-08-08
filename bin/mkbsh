@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Create an empty bash script with she-bang line and proper permisisons
+touch $1
+echo '#!/bin/bash' > $1
+chmod +x $1
