@@ -1,7 +1,11 @@
 #!/bin/bash
 baseDir=$(pwd)
-rm -rf ~/.vim && ln -s $baseDir/vim ~/.vim
+
+rm -r ~/.vim && ln -s $baseDir/vim ~/.vim
 rm ~/.bashrc && ln -s $baseDir/bashrc  ~/.bashrc
-rm -rf ~/.vimrc && ln -s $baseDir/vimrc ~/.vimrc
-rm -rf ~/bin && ln -s $baseDir/bin ~/bin
+rm ~/.vimrc && ln -s $baseDir/vimrc ~/.vimrc
+rm -r ~/bin && ln -s $baseDir/bin ~/bin
+rm -r ~/.font && ln -s $baseDir/fonts ~/.fonts
+
+fc-cache -vf
 source ~/.bashrc
