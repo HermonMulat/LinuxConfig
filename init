@@ -6,6 +6,7 @@ rm ~/.bashrc && ln -s $baseDir/bashrc  ~/.bashrc
 rm ~/.vimrc && ln -s $baseDir/vimrc ~/.vimrc
 rm -r ~/bin && ln -s $baseDir/bin ~/bin
 rm -r ~/.font && ln -s $baseDir/fonts ~/.fonts
+ln -s $baseDir/prompts/p1 ~/.prompt1
 
 fc-cache -vf
 source ~/.bashrc
