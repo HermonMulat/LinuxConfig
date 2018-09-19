@@ -1,11 +1,12 @@
 #!/bin/bash
 baseDir=$(pwd)
 
-rm -r ~/.vim && ln -s $baseDir/vim ~/.vim
-rm ~/.bashrc && ln -s $baseDir/bashrc  ~/.bashrc
-rm ~/.vimrc && ln -s $baseDir/vimrc ~/.vimrc
-rm -r ~/bin && ln -s $baseDir/bin ~/bin
-rm -r ~/.font && ln -s $baseDir/fonts ~/.fonts
+rm -r ~/.vi 2>/dev/null; ln -s $baseDir/vim ~/.vim
+rm ~/.bashr 2>/dev/null; ln -s $baseDir/bashrc  ~/.bashrc
+rm ~/.vimrc 2>/dev/null; ln -s $baseDir/vimrc ~/.vimrc
+rm -r ~/bin 2>/dev/null; ln -s $baseDir/bin ~/bin
+rm -r ~/.font 2>/dev/null; ln -s $baseDir/fonts ~/.fonts
+rm -r ~/.gitconfig 2>/dev/null; ln -s $baseDir/gitconfig ~/.gitconfig
 ln -s $baseDir/prompts/p1 ~/.prompt1
 
 fc-cache -vf
