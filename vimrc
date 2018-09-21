@@ -15,3 +15,5 @@ let mapleader = "<Space>"
 inoremap jk <ESC>:wq<ENTER>
 nnoremap <M-s> :w<ENTER>
 inoremap <M-s> <Esc>:w<ENTER>a
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
