@@ -120,3 +120,4 @@ if ! shopt -oq posix; then
   fi
 fi
 source ~/.prompt1
+alias theme='bash -c  "$(wget -qO- https://git.io/vQgMr)"'
