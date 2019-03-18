@@ -11,7 +11,7 @@ __powerline() {
     GREEN='\[\033[0;32m\]'
     RED='\[\033[0;31m\]'
     YELLOW='\[\033[0;33m\]'
-    
+
     COLOR_CWD=$BLUE
     COLOR_GIT=$YELLOW
 
@@ -19,11 +19,11 @@ __powerline() {
     SYMBOL_GIT_MODIFIED='*'
     SYMBOL_GIT_PUSH=$'\u21e1' # arrow up (broken lines)
     SYMBOL_GIT_PULL=$'\u21e3' # arrow down (broken lines)
-    DOT=$'\u26ab'
+    DOT=$'\u25CF'
 
     PS_SYMBOL="$DOT"
 
-    __git_info() { 
+    __git_info() {
         [[ $POWERLINE_GIT = 0 ]] && return # disabled
         hash git 2>/dev/null || return # git not found
         local git_eng="env LANG=C git"   # force git output in English
@@ -49,7 +49,7 @@ __powerline() {
                 [[ $line =~ ahead\ ([0-9]+) ]] && marks+=" $SYMBOL_GIT_PUSH${BASH_REMATCH[1]}"
                 [[ $line =~ behind\ ([0-9]+) ]] && marks+=" $SYMBOL_GIT_PULL${BASH_REMATCH[1]}"
             #branch is modified if output contains more lines after header line
-            else 
+            else
                 marks="$SYMBOL_GIT_MODIFIED$marks"
                 break
             fi
@@ -61,7 +61,7 @@ __powerline() {
 
     ps1() {
         # Check the exit code of the previous command and display different
-        # colors in the prompt accordingly. 
+        # colors in the prompt accordingly.
         if [ $? -eq 0 ]; then
             local symbol="$GREEN $PS_SYMBOL $RESET"
         else

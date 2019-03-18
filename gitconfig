@@ -13,3 +13,8 @@
 
 [color "branch"]
   remote = yellow
+[user]
+	email = hermonmulat@gmail.com
+	name = Hermon
+[core]
+	editor = vim
