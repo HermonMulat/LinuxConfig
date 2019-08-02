@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/bash -e
 baseDir=$(pwd)
 
 mkdir ~/old_prof
-mv -r ~/.vi ~/old_prof/ 2>/dev/null; ln -s $baseDir/vim ~/.vim
-mv ~/.bash_profile ~/old_prof/.bash_profile 2>/dev/null; ln -s $baseDir/bashrc  ~/.bash_profile
+mv  ~/.vim ~/old_prof/vim 2>/dev/null; ln -s $baseDir/vim ~/.vim
+mv ~/.bash_profile ~/old_prof/bash_profile 2>/dev/null; ln -s $baseDir/bashrc  ~/.bash_profile
 mv ~/.vimrc ~/old_prof/.vimrc 2>/dev/null; ln -s $baseDir/vimrc ~/.vimrc
 
 ln -s $baseDir/prompts/p1 ~/.prompt1
-source ~/.bashrc
+source ~/.bash_profile
