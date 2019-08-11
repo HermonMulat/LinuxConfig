@@ -60,7 +60,7 @@ __powerline() {
         printf " $ref$marks"
     }
 
-    precmd() {
+    __zshPrompt() {
         # Check the exit code of the previous command and display different
         # colors in the prompt accordingly.
         if [ $? -eq 0 ]; then
@@ -77,7 +77,8 @@ __powerline() {
         PROMPT="$cwd$git$symbol"
     }
 
+    precmd_functions+='__zshPrompt'
+
 }
 
 __powerline
-unset __powerline
