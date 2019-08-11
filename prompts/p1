@@ -1,18 +1,18 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
 ## Uncomment to disable git info
 #POWERLINE_GIT=0
 
 __powerline() {
     # Colorscheme
-    RESET='\[\033[m\]'
-    CYAN='\[\033[0;34m\]'
-    BLUE='\[\033[0;36m\]'
-    GREEN='\[\033[0;32m\]'
-    RED='\[\033[0;31m\]'
-    YELLOW='\[\033[0;33m\]'
+    RESET="%{$fg[default]%}"
+    CYAN="%{$fg[cyan]%}"
+    BLUE="%{$fg[blue]%}"
+    GREEN="%{$fg[green]%}"
+    RED="%{$fg[red]%}"
+    YELLOW="%{$fg[yellow]%}"
 
-    COLOR_CWD=$BLUE
+    COLOR_CWD=$CYAN
     COLOR_GIT=$YELLOW
 
     SYMBOL_GIT_BRANCH='⑂'
@@ -29,14 +29,14 @@ __powerline() {
         local git_eng="env LANG=C git"   # force git output in English
 
         # get current branch name
-        local ref=$($git_eng symbolic-ref --short HEAD 2>/dev/null)
+        local ref=$(env LANG=C git symbolic-ref --short HEAD 2>/dev/null)
 
         if [[ -n "$ref" ]]; then
             # prepend branch symbol
             ref=$SYMBOL_GIT_BRANCH$ref
         else
             # get tag name or short unique hash
-            ref=$($git_eng describe --tags --always 2>/dev/null)
+            ref=$(env LANG=C git describe --tags --always 2>/dev/null)
         fi
 
         [[ -n "$ref" ]] || return  # not a git repo
@@ -53,13 +53,13 @@ __powerline() {
                 marks="$SYMBOL_GIT_MODIFIED$marks"
                 break
             fi
-        done < <($git_eng status --porcelain --branch 2>/dev/null)  # note the space between the two <
+        done < <(env LANG=C git status --porcelain --branch 2>/dev/null)  # note the space between the two <
 
         # print the git branch segment without a trailing newline
         printf " $ref$marks"
     }
 
-    ps1() {
+    precmd() {
         # Check the exit code of the previous command and display different
         # colors in the prompt accordingly.
         if [ $? -eq 0 ]; then
@@ -68,20 +68,14 @@ __powerline() {
             local symbol="$RED $PS_SYMBOL $RESET"
         fi
 
-        local cwd="$GREEN\u$RESET:$COLOR_CWD\W$RESET"
+        local cwd="${GREEN}clouddesk${RESET}:${COLOR_CWD}%c${RESET}"
 
-        if shopt -q promptvars; then
-            __powerline_git_info="$(__git_info)"
-            local git="$COLOR_GIT\${__powerline_git_info}$RESET"
-        else
-            # promptvars is disabled. Avoid creating unnecessary env var.
-            local git="$COLOR_GIT$(__git_info)$RESET"
-        fi
+        __powerline_git_info="$(__git_info)"
+        local git="${COLOR_GIT}${__powerline_git_info}${RESET}"
 
-        PS1="$cwd$git$symbol"
+        PROMPT="$cwd$git$symbol"
     }
 
-    PROMPT_COMMAND="ps1${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 }
 
 __powerline
